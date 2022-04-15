@@ -370,6 +370,7 @@ resource "aws_subnet" "public" {
     },
     var.tags,
     var.public_subnet_tags,
+    lookup(var.public_subnet_tags_per_subnet, count.index, {}),
   )
 }
 
@@ -397,6 +398,7 @@ resource "aws_subnet" "private" {
     },
     var.tags,
     var.private_subnet_tags,
+    lookup(var.private_subnet_tags_per_subnet, count.index, {}),
   )
 }
 
@@ -577,6 +579,7 @@ resource "aws_subnet" "intra" {
     },
     var.tags,
     var.intra_subnet_tags,
+    lookup(var.intra_subnet_tags_per_subnet, count.index, {}),
   )
 }
 
